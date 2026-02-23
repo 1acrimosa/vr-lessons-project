@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <title>Layout Example</title>
+      <style>
+          * {
+              margin: 0;
+              padding: 0;
+              box-sizing: border-box;
+          }
+
+          body {
+              font-family: Arial, sans-serif;
+              height: 100vh;
+              display: flex;
+              flex-direction: column;
+          }
+
+          header {
+              background-color: #333;
+              color: white;
+              padding: 1rem;
+              text-align: center;
+              flex-shrink: 0;
+          }
+
+          .main-container {
+              flex: 1;
+              display: flex;
+          }
+
+          aside {
+              background-color: #f4f4f4;
+              width: 250px;
+              padding: 2rem;
+              flex-shrink: 0;
+          }
+
+          main {
+              flex: 1;
+              padding: 2rem;
+          }
+
+          footer {
+              background-color: #333;
+              color: white;
+              padding: 1rem;
+              text-align: center;
+              flex-shrink: 0;
+          }
+
+          /* Responsive: Stack sidebar below content on small screens */
+          @media (max-width: 768px) {
+              .main-container {
+                  flex-direction: column;
+              }
+              aside {
+                  width: 100%;
+              }
+          }
+      </style>
+</head>
+<body>
+<header>
+      <h1>Header in here</h1>
+</header>
+
+<div class="main-container">
+      <aside>
+            <h2>Sidebar</h2>
+            <p>Sidebar like this</p>
+      </aside>
+      <main>
+            <h2>Content</h2>
+            <p>Main content here. Add more content to see it expand.</p>
+      </main>
+</div>
+
+<footer>
+      <p>Footer in here</p>
+</footer>
+</body>
+</html>

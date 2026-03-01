@@ -93,4 +93,47 @@ footer {
     aside {
         width: 100%;
     }
-}}
+}
+
+
+
+
+/* Твой существующий код + */
+#lessons-list {
+    list-style: none;
+    padding: 0;
+}
+
+#lessons-list li {
+    padding: 10px;
+    cursor: pointer;
+    border-bottom: 1px solid #ddd;
+}
+
+#lessons-list li.active {
+    background: #4CC3D9;
+    color: white;
+}
+
+#lessons-list li:hover {
+    background: #f0f0f0;
+}
+
+.welcome {
+    text-align: center;
+    padding: 2rem;
+}
+
+main {
+    position: relative;
+}
+
+.controls label {
+    display: inline-block;
+    margin: 5px 15px 5px 0;
+    font-size: 12px;
+}
+
+.controls input {
+    width: 80px;
+}

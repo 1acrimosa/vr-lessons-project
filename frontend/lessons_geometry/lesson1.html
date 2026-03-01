@@ -5,6 +5,55 @@
   <title>Title</title>
 </head>
 <body>
+      <h2>Урок 1: Три попарно перпендикулярные прямые</h2>
+      <p>Классическая система координат в 3D.</p>
+
+      <div class="figure">
+            <a-scene embedded>
+                  <!-- Три оси координат (красная-X, зеленая-Y, синяя-Z) -->
+                  <a-entity id="axes">
+                        <!-- X-ось (красная, по X) -->
+                        <a-entity line="start: -2 0 0; end: 2 0 0; color: red"></a-entity>
+                        <!-- Y-ось (зеленая, по Y) -->
+                        <a-entity line="start: 0 -2 0; end: 0 2 0; color: green"></a-entity>
+                        <!-- Z-ось (синяя, по Z) -->
+                        <a-entity line="start: 0 0 -2; end: 0 0 2; color: blue; opacity: 0.8"></a-entity>
+                  </a-entity>
+
+                  <!-- Камера ближе -->
+                  <a-camera position="0 0 5" wasd-controls look-controls></a-camera>
+            </a-scene>
+
+            <!-- Контролы (HTML поверх 3D) -->
+            <div class="controls">
+                  <label>Размер осей: <input type="range" id="size" min="0.5" max="5" value="2" step="0.1"></label>
+                  <br>
+                  <label>Вращение X: <input type="range" id="rotX" min="0" max="360" value="0" step="1"></label>
+                  <label>Y: <input type="range" id="rotY" min="0" max="360" value="0" step="1"></label>
+                  <label>Z: <input type="range" id="rotZ" min="0" max="360" value="0" step="1"></label>
+            </div>
+      </div>
+
+      <script>
+          // Обновление осей по слайдерам
+          document.querySelector('#size').addEventListener('input', (e) => {
+              const size = e.target.value;
+              const axes = document.querySelector('#axes');
+              axes.setAttribute('scale', `${size} ${size} ${size}`);
+          });
+
+          // Вращение
+          ['rotX', 'rotY', 'rotZ'].forEach(axis => {
+              document.querySelector(`#${axis}`).addEventListener('input', (e) => {
+                  const axes = document.querySelector('#axes');
+                  const rot = axes.getAttribute('rotation');
+                  const value = parseFloat(e.target.value);
+                  axes.setAttribute('rotation', `${axis === 'rotX' ? value : rot.x}
+                                         ${axis === 'rotY' ? value : rot.y}
+                                         ${axis === 'rotZ' ? value : rot.z}`);
+              });
+          });
+      </script>
 
 </body>
 </html>
